@@ -1,14 +1,12 @@
-import 'package:craveiospro/custom_date_picker_form_field.dart';
 import 'package:craveiospro/dashboard_screen.dart';
 import 'package:craveiospro/viewcust.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:intl/intl.dart';
-
+import 'custom_date_picker_form_field.dart';
 
 //mohnish
-
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -96,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Step(
       state: _activeStepIndex<= 0? StepState.editing : StepState.complete,
       isActive: _activeStepIndex >= 0,
-      title: const Text('Personal\nDetails'),
+      title: const Text('Step 1'),
       content: SingleChildScrollView(
         padding: const EdgeInsets.only(top: 25.0, right: 0.0, bottom: 25.0, left: 10.0),
         child: Column(
@@ -303,7 +301,7 @@ class _MyHomePageState extends State<MyHomePage> {
     Step(
       state: _activeStepIndex<= 1? StepState.editing : StepState.complete,
       isActive: _activeStepIndex >= 1,
-      title: const Text('Company\nDetails'),
+      title: const Text('Step 2'),
       content: SingleChildScrollView(
         padding: const EdgeInsets.only(top: 25.0, right: 0.0, bottom: 25.0, left: 10.0),
         child: Column(
@@ -438,10 +436,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   pickDateOfBirth(context);
                 }),
 
-
-
-
-
             const Padding(
               padding: EdgeInsets.only(bottom: 30.0),
             ),
@@ -467,7 +461,7 @@ class _MyHomePageState extends State<MyHomePage> {
       isActive: _activeStepIndex >= 2,
       title: const Padding(
         padding: EdgeInsets.all(8.0),
-        child: Text('Confirm\nDetails'),
+        child: Text('Step 3'),
       ),
       content: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -705,7 +699,7 @@ class _MyHomePageState extends State<MyHomePage> {
       builder: (context, child) => Theme(
           data: ThemeData().copyWith(
             colorScheme: const ColorScheme.light(
-              primary: Colors.purple,
+              primary: Color(0xFF004B8D),
               onPrimary: Colors.white,
               onSecondary: Colors.black,
             ),
@@ -798,14 +792,12 @@ class Customer {
 
 /*
 Future <void> pickDateOfBirth(BuildContext context) async{
-
   final initialDate = DateTime.now();
   final newDate = await showDatePicker(
       context: context,
       initialDate: _dateOfBirth ?? initialDate, // for selected date as it is
       firstDate: DateTime(DateTime.now().year - 100),
       lastDate: DateTime(DateTime.now().year + 1),
-
       builder: (context,child) => Theme(
         data: ThemeData().copyWith(
           colorScheme: const ColorScheme.light(
@@ -818,14 +810,11 @@ Future <void> pickDateOfBirth(BuildContext context) async{
         child: child ?? const Text(''),
       )
   );
-
   if(newDate == null)
   {
     return;
   }
-
   setState(() {
-
     _dateOfBirth = newDate; // for selected date as it is
     String dob = DateFormat('dd/MM/yyyy').format(newDate);
     //_dateOfBirthController.text = newDate.toIso8601String();
@@ -833,5 +822,4 @@ Future <void> pickDateOfBirth(BuildContext context) async{
   });
 }
 }
-
 */
