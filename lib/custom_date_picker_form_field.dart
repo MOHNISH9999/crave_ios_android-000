@@ -21,13 +21,13 @@ class CustomDatePickerFormField extends StatelessWidget {
       controller: _controller,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
-        
-                border: OutlineInputBorder(),
-                filled: true,
-                icon: Icon(Icons.date_range),
-              
-        
-        
+
+        border: OutlineInputBorder(),
+        filled: true,
+        icon: Icon(Icons.date_range),
+
+
+
         label: Text(_txtLabel),
       ),
       validator: ((value) {
