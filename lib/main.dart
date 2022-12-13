@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController mobilenumber = TextEditingController();
-  TextEditingController gender = TextEditingController();
+  //TextEditingController gender = TextEditingController();
   TextEditingController addressStreet1 = TextEditingController();
   TextEditingController addressStreet2 = TextEditingController();
   TextEditingController addressCity = TextEditingController();
@@ -72,12 +72,12 @@ class _MyHomePageState extends State<MyHomePage> {
   DateTime? _dateofNextStep;
   TextEditingController comments = TextEditingController();
 
-  String genderValue='' ;
-   String interestedInValue ='';
-   String nextStepsValue ='';
-   String reachOutValue ='';
+  String genderValue = '';
+  String interestedInValue = '';
+  String nextStepsValue = '';
+  String reachOutValue = '';
 
-  var getResult ;
+  var getResult = '';
 
 
 //   String result = "Hello World...!";
@@ -764,7 +764,8 @@ class _MyHomePageState extends State<MyHomePage> {
           //_scanQR(); // calling a function when user click on button
 
           final name2 = name.text;
-          final email2= email.text;
+          final email2 = email.text;
+          final genderValue2 = genderValue;
           final mobilenumber2 = mobilenumber.text;
           final addressStreet1_2 = addressStreet1.text;
           final addressStreet2_2 = addressStreet2.text;
@@ -776,16 +777,17 @@ class _MyHomePageState extends State<MyHomePage> {
           final companyAddress2 = companyAddress.text;
           final companyMail2 = companyMail.text;
           final website2 = website.text;
-           final interestedIn2 = interestedInValue;
-           final nextSteps2 = nextStepsValue;
-           final reachOutIn2 = reachOutValue;
-           final nextStepsPlanned2 = dateOfNextStepscontroller.toString();
-           final comments2 = comments.text;
+          final interestedIn2 = interestedInValue;
+          final nextSteps2 = nextStepsValue;
+          final reachOutIn2 = reachOutValue;
+          final nextStepsPlanned2 = dateOfNextStepscontroller.text;
+          final comments2 = comments.text;
 
 
           createuser(
             name: name2,
             email:email2,
+            genderValue: genderValue2,
             mobilenumber: mobilenumber2,
             addressStreet1: addressStreet1_2,
             addressStreet2: addressStreet2_2,
@@ -798,10 +800,10 @@ class _MyHomePageState extends State<MyHomePage> {
             companyMail: companyMail2,
             website: website2,
             interestedInValue: interestedIn2,
-             nextStepsValue: nextSteps2,
-             reachOutValue: reachOutIn2,
-             dateOfNextStepscontroller: nextStepsPlanned2,
-             comments: comments2,
+            nextStepsValue: nextSteps2,
+            reachOutValue: reachOutIn2,
+            dateOfNextStepscontroller: nextStepsPlanned2,
+            comments: comments2,
           );
         },
         label: const Text("Submit Data"),
@@ -837,6 +839,7 @@ class _MyHomePageState extends State<MyHomePage> {
     required String
     name,
     email,
+    genderValue,
     mobilenumber,
     addressStreet1,
     addressStreet2,
@@ -848,11 +851,12 @@ class _MyHomePageState extends State<MyHomePage> {
     companyAdd,
     companyMail,
     website,
-     interestedInValue,
-     nextStepsValue,
-     reachOutValue,
-     dateOfNextStepscontroller,
-     comments,
+    interestedInValue,
+    nextStepsValue,
+    reachOutValue,
+    dateOfNextStepscontroller,
+    comments,
+
 
 
   }) async {
@@ -861,6 +865,7 @@ class _MyHomePageState extends State<MyHomePage> {
       id: docuser.id,
       name: name,
       email: email,
+      genderValue: genderValue,
       mobilenumber: mobilenumber,
       addressStreet1: addressStreet1,
       addressStreet2: addressStreet2,
@@ -872,11 +877,11 @@ class _MyHomePageState extends State<MyHomePage> {
       companyAdd: companyAdd,
       companyMail: companyMail,
       website: website,
-       interestedInValue:interestedInValue ,
-       nextStepsValue: nextStepsValue,
-       reachOutValue: reachOutValue,
-       dateOfNextStepscontroller: dateOfNextStepscontroller,
-       comments: comments,
+      interestedInValue:interestedInValue ,
+      nextStepsValue: nextStepsValue,
+      reachOutValue: reachOutValue,
+      dateOfNextStepscontroller: dateOfNextStepscontroller,
+      comments: comments,
 
     );
     final json = customer.toJson();
@@ -934,6 +939,7 @@ class Customer {
   String id;
   final String name;
   final String email;
+  final String genderValue;
   final String mobilenumber;
   final String addressStreet1;
   final String addressStreet2;
@@ -945,17 +951,18 @@ class Customer {
   final String companyAdd;
   final String companyMail;
   final String website;
-   final String interestedInValue;
+  final String interestedInValue;
   final String nextStepsValue;
-   final String reachOutValue;
-   final String dateOfNextStepscontroller;
-   final String comments;
+  final String reachOutValue;
+  final String dateOfNextStepscontroller;
+  final String comments;
 
 
   Customer({
     this.id = '',
     required this.name,
     required this.email,
+    required this.genderValue,
     required this.mobilenumber,
     required this.addressStreet1,
     required this.addressStreet2,
@@ -967,11 +974,11 @@ class Customer {
     required this.companyAdd,
     required this.companyMail,
     required this.website,
-     required this.interestedInValue,
-     required this.nextStepsValue,
-     required this.reachOutValue,
-     required this.dateOfNextStepscontroller,
-     required this.comments,
+    required this.interestedInValue,
+    required this.nextStepsValue,
+    required this.reachOutValue,
+    required this.dateOfNextStepscontroller,
+    required this.comments,
 
   });
 
@@ -979,6 +986,7 @@ class Customer {
     'id': id,
     'name': name,
     'email': email,
+    'genderValue': genderValue,
     'mobilenumber': mobilenumber,
     'addressStreet1': addressStreet1,
     'addressStreet2': addressStreet2,
@@ -990,17 +998,18 @@ class Customer {
     'companyAdd': companyAdd,
     'companyMail': companyMail,
     'website': website,
-     'interestedInValue' : interestedInValue,
-     'nextStepsValue' : nextStepsValue,
-     'reachOutValue' : reachOutValue,
-     'dateOfNextStepscontroller' : dateOfNextStepscontroller,
-     'comments' : comments,
+    'interestedIn' : interestedInValue,
+    'nextSteps' : nextStepsValue,
+    'reachOut' : reachOutValue,
+    'dateOfNextStepsPlanned' : dateOfNextStepscontroller,
+    'comments' : comments,
   };
 
   static Customer fromJson(Map<String, dynamic> json) =>
       Customer(
         name: json['name'],
         email: json['email'],
+        genderValue: json['genderValue'],
         mobilenumber: json['mobilenumber'],
         pincode: json['pincode'],
         addressStreet1: json ['addressStreet1'],
@@ -1012,12 +1021,45 @@ class Customer {
         companyAdd: json['companyAdd'],
         companyMail: json['companyMail'],
         website: json['website'],
-         interestedInValue: json['interestedIn'],
-         nextStepsValue: json['nextStepsValue'],
-         reachOutValue: json['reachOutValue'],
-         dateOfNextStepscontroller: json['dateOfNextStepscontroller'],
-         comments: json['comments'],
+        interestedInValue: json['interestedIn'],
+        nextStepsValue: json['nextSteps'],
+        reachOutValue: json['reachOut'],
+        dateOfNextStepscontroller: json['dateOfNextStepsPlanned'],
+        comments: json['comments'],
       );
 }
 
 
+/*
+Future <void> pickDateOfBirth(BuildContext context) async{
+  final initialDate = DateTime.now();
+  final newDate = await showDatePicker(
+      context: context,
+      initialDate: _dateOfBirth ?? initialDate, // for selected date as it is
+      firstDate: DateTime(DateTime.now().year - 100),
+      lastDate: DateTime(DateTime.now().year + 1),
+      builder: (context,child) => Theme(
+        data: ThemeData().copyWith(
+          colorScheme: const ColorScheme.light(
+            primary: Colors.yellow,
+            onPrimary: Colors.pink,
+            onSurface: Colors.black,
+          ),
+          dialogBackgroundColor: Colors.white,
+        ),
+        child: child ?? const Text(''),
+      )
+  );
+  if(newDate == null)
+  {
+    return;
+  }
+  setState(() {
+    _dateOfBirth = newDate; // for selected date as it is
+    String dob = DateFormat('dd/MM/yyyy').format(newDate);
+    //_dateOfBirthController.text = newDate.toIso8601String();
+    _dateOfBirthController.text = dob;
+  });
+}
+}
+*/
